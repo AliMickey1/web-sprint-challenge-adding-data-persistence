@@ -6,7 +6,7 @@ function getProject() {
 }
 
 async function insert(project) {
-    const [project_id] = await db('project').insert(project)
+    const [project_id] = await db('projects').insert(project)
     return db('projects').where({project_id}).first()
 }
 
