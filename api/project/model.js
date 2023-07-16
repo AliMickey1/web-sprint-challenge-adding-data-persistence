@@ -2,12 +2,12 @@
 const db = require('../../data/dbConfig')
 
 function getProject() {
-    return db('project')
+    return db('projects')
 }
 
 async function insert(project) {
     const [project_id] = await db('project').insert(project)
-    return db('project').where({project_id}).first()
+    return db('projects').where({project_id}).first()
 }
 
 
