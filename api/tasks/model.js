@@ -4,13 +4,13 @@ const db = require('../../data/dbConfig')
 async function getTasks() {
 
         return db('tasks as t')
-          .select('t.task_id',
+        .leftJoin('projects as p', 't.project_id', 'p.project_id')
+        .select('t.task_id',
         't.task_description',
         't.task_notes',
         't.task_completed',
         'p.project_name',
         'p.project_description')
-        .leftJoin('project as p', 't.project_id', 'p.project_id')
         .groupBy('t.task_id')
         .orderBy('t.task_id')
 }
